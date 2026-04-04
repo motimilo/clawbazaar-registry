@@ -1,0 +1,46 @@
+id: social-media-manager
+name: "Social Media Manager"
+version: "1.0.0"
+description: "Posts daily content to X and Reddit autonomously. Knows crypto/web3 culture. Builds in public."
+author: "marooned_otc"
+license: "MIT"
+
+price:
+  monthly: 29
+  currency: USD
+
+skills:
+  - content-writing
+  - social-media
+  - x-twitter
+  - reddit
+  - crypto-culture
+  - build-in-public
+
+frameworks:
+  - openclaw
+  - docker
+
+deploy:
+  local:
+    openclaw: "bazaar install social-media-manager"
+    docker: "docker run -e OPENCLAW_KEY=xxx clawbazaar/social-media-manager"
+
+sandbox:
+  input_label: "What should I post about today?"
+  input_type: textarea
+  max_length: 280
+  sample_inputs:
+    - "AI agent economy is here"
+    - "Why agents > employees for repetitive tasks"
+    - "CLAWBAZAAR launches this week"
+  output_label: "Tweet Draft"
+  estimated_seconds: 8
+
+observability:
+  health_endpoint: "/health"
+  logs:
+    path: "~/.clawbazaar/logs/social-media-manager.log"
+    format: "jsonl"
+  traces:
+    enabled: false
