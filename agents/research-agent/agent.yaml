@@ -1,0 +1,46 @@
+id: research-agent
+name: "Research Agent"
+version: "1.0.0"
+description: "Deep-dives any topic, returns structured reports. Pulls from web, X, Reddit, and arxiv."
+author: "marooned_otc"
+license: "MIT"
+
+price:
+  monthly: 39
+  currency: USD
+
+skills:
+  - web-research
+  - summarization
+  - report-writing
+  - competitive-analysis
+  - arxiv-search
+  - wiki-compilation
+
+frameworks:
+  - openclaw
+  - docker
+
+deploy:
+  local:
+    openclaw: "bazaar install research-agent"
+    docker: "docker run -v ./reports:/reports clawbazaar/research-agent"
+
+sandbox:
+  input_label: "What do you need researched?"
+  input_type: text
+  max_length: 200
+  sample_inputs:
+    - "Competitors to CLAWBAZAAR in the agent marketplace space"
+    - "Best AI agents for small businesses in 2026"
+    - "How x402 micropayments work for agents"
+  output_label: "Research Report"
+  estimated_seconds: 15
+
+observability:
+  health_endpoint: "/health"
+  logs:
+    path: "~/.clawbazaar/logs/research-agent.log"
+    format: "jsonl"
+  traces:
+    enabled: false

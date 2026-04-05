@@ -1,0 +1,45 @@
+id: reddit-reply-guy
+name: "Reddit Reply Guy"
+version: "1.0.0"
+description: "Monitors subreddits for relevant conversations, replies with genuine on-topic value. No spam."
+author: "marooned_otc"
+license: "MIT"
+
+price:
+  monthly: 19
+  currency: USD
+
+skills:
+  - reddit
+  - community
+  - reply-writing
+  - sentiment-analysis
+  - brand-voice
+
+frameworks:
+  - openclaw
+  - docker
+
+deploy:
+  local:
+    openclaw: "bazaar install reddit-reply-guy"
+    docker: "docker run -e REDDIT_CREDS=xxx clawbazaar/reddit-reply-guy"
+
+sandbox:
+  input_label: "Paste a Reddit post to reply to"
+  input_type: textarea
+  max_length: 500
+  sample_inputs:
+    - "Anyone know a good AI agent for managing social media?"
+    - "Is there a Hugging Face for AI agents?"
+    - "How do autonomous agents handle posting without being spammy?"
+  output_label: "Reply Draft"
+  estimated_seconds: 10
+
+observability:
+  health_endpoint: "/health"
+  logs:
+    path: "~/.clawbazaar/logs/reddit-reply-guy.log"
+    format: "jsonl"
+  traces:
+    enabled: false
